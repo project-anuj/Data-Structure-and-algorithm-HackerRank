@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n;
+    cin>>n;
+    stack<int> s,m;
+    while(n--)
+    {
+        int x;
+        cin>>x;
+        if(x==1)
+        {   int y;
+            cin>>y;
+            if(m.empty())
+            {
+                s.push(y);
+                m.push(y);
+            }
+            else
+            {
+                if(y>=m.top())
+                {
+                    s.push(y);
+                    m.push(y);
+                }
+                else
+                {
+                    s.push(y);
+                }
+            }
+        }
+        else if(x==2)
+        {
+            if(s.top()==m.top())
+            {
+                s.pop();
+                m.pop();
+            }
+            else
+            {
+                s.pop();
+            }
+        }
+        else
+        {
+            cout<<m.top()<<endl;
+        }
+    }
+    return 0;
+}
