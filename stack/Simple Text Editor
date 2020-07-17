@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+stack<string> s2;
+
+int main()
+{
+    int w;
+    cin>>w;
+    string s="";
+    s2.push(s);
+    while(w--)
+    {
+        int x;
+        cin>>x;
+        if(x==1)
+        {
+            string y;
+            cin>>y;
+            s=s+y;
+            s2.push(s);
+        }
+        else if(x==2)
+        {    int y;
+            cin>>y;
+            int i=0;
+            while(!s.empty()&&i<y)
+            {
+                s.pop_back();
+                i++;
+            }
+            s2.push(s);
+        }
+        else if(x==3)
+        {
+            int y;
+            cin>>y;
+            cout<<s[y-1]<<endl;
+        }
+        else if(x==4)
+        {
+            s2.pop();
+            s=s2.top();
+        }
+    }
+}
