@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int poisonousPlants(vector<int> p) {
+    int top = 0, count = 0, min;
+    int stack[p.size()] = {0};
+    int days[p.size()] = {0};
+
+    stack[top++] = 0;
+    min = p[0];
+
+    for(int i = 1; i < p.size(); i++) {
+        if(p[i] <= min) {
+            min = p[i];
+            top = 0;
+        } else {
+            if(p[i-1] < p[i])
+                days[i] = 1;
+            else {  
+                while(top && p[i] <= p[stack[top-1]]) {
+                    if(days[i] < days[stack[top-1]] + 1)
+                        days[i] = days[stack[top-1]] + 1;
+                    top--;
+                }
+            }
+            if(count < days[i]) count = days[i];
+        }
+        stack[top++] = i;
+    }
+    return count;
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> p;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        p.push_back(x);
+    }
+    cout<<poisonousPlants(p);
+}
