@@ -1,0 +1,33 @@
+int super(long long int z)
+{
+    if(z<=9)
+    {
+        return z;
+    }
+    long long int sum=0;
+    long long int m=0;
+
+    while(z!=0)
+    {
+        
+        m=z%10;
+        sum=sum+m;
+        z=z/10;
+
+
+    }
+    return super(sum);
+
+
+}
+
+// Complete the superDigit function below.
+int superDigit(string n, int k) {
+long long int sum=0;
+long long int m;
+   for(int i=0; i<n.size(); i++){
+        sum+= n[i]-'0';
+    }
+    return super(sum*k);
+
+}
