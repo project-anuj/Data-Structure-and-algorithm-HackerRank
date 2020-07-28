@@ -1,0 +1,23 @@
+ Node * insert(Node * root, int data) {
+        Node* par,*ptr,*tmp;
+        ptr=root;
+        par=NULL;
+        while (ptr!=NULL) {
+        par=ptr;
+        if(data<ptr->data)
+        ptr=ptr->left;
+        else if(data>ptr->data)
+        ptr=ptr->right;
+        }
+        tmp=(Node*) malloc(sizeof(Node));
+        tmp->data=data;
+        tmp->left=NULL;
+        tmp->right=NULL;
+        if(par==NULL)
+        root=tmp;
+        else if(data<par->data)
+        par->left=tmp;
+        else
+        par->right=tmp;
+        return root;
+    }
