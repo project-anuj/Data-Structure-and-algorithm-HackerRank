@@ -1,0 +1,17 @@
+int hackerlandRadioTransmitters(vector<int> x, int k) {
+    sort(x.begin(),x.end());
+    int c=0;
+    unsigned int i=0;
+    int r=0; 
+    while(i<x.size())
+    {   c++;
+        r=x[i]+k;
+        while(i<x.size()&&x[i]<=r)
+        i++;
+        i--;
+        r=x[i]+k;
+        while(i<x.size()&&x[i]<=r)
+        i++;
+    }
+    return c;
+}
