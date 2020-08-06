@@ -1,0 +1,46 @@
+//.............using Min Heap.................
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int minHeap(vector<int>& A,int n,int k)
+{
+    priority_queue<int,vector<int>,greater<int>> minH;
+    for(auto x: A)
+    {
+        minH.push(x);
+    }
+    int c=0;
+    while(true)
+    {
+        if(minH.top()>=k)
+        return c;
+        int x=minH.top();
+        minH.pop();
+        int y=minH.top();
+        minH.pop();
+        int z=x+2*y;
+        minH.push(z);
+        c++;
+        if(minH.size()==1)
+        break;
+    }
+    if(minH.top()>=k)
+    return c;
+    else {
+    return -1;
+    }
+}
+int main()
+{
+    int n,k;
+    cin>>n>>k;
+    vector<int> v;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        v.push_back(x);
+    }
+    cout<<minHeap(v,n,k);
+}
