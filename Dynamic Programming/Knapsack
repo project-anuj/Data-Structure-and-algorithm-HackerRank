@@ -1,0 +1,29 @@
+//...........Unbounded knapsack.................//
+
+#include<bits/stdc++.h>
+using namespace std;
+int dp[2001][2001];
+
+int knapsack(int a[],int n,int sum)
+{
+    if(n==0||sum==0)
+    return 0;
+    if(a[n-1]>sum)
+    return dp[n][sum]=knapsack(a,n-1,sum);
+    else
+    return dp[n][sum]=max(knapsack(a,n-1,sum),a[n-1]+knapsack(a,n,sum-a[n-1]));
+}
+int main()
+{   memset(dp,-1,sizeof(dp));
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++)
+    {
+        int n,k;
+        cin>>n>>k;
+        int a[n];
+        for(int i=0;i<n;i++)
+        cin>>a[i];
+        cout<<knapsack(a,n,k)<<endl;;
+    }
+}
